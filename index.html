@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analýza návštěvnosti: JMK vs. Praha</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        .font-serif { font-family: 'Lora', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-blue-200">
+    
+    <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Hlavička článku s prokliky -->
+        <header class="mb-14 border-b border-stone-200 pb-10">
+            <div class="text-blue-700 font-semibold tracking-wider uppercase text-xs mb-4">Datová analýza • Semestrální práce</div>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight mb-6">
+                Turismus v datech: Jihomoravský kraj vs. Praha
+            </h1>
+            <p class="text-xl text-stone-600 leading-relaxed mb-6 font-serif italic">
+                Analýza agregovaného datasetu návštěvnosti památek v letech 2019–2025 ukazuje, jak pandemický šok ovlivnil cestovní ruch a jak silná je koncentrace turistů u nejznámějších objektů.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div class="flex items-center gap-3 text-sm text-stone-500 font-medium">
+                    <a href="https://marekmanek.netlify.app/" target="_blank" class="text-stone-900 hover:text-blue-700 transition-colors border-b border-transparent hover:border-blue-700">Marek Maněk</a>
+                    <span>•</span>
+                    <span>VŠPJ</span>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="URL_TVÉHO_GITHUB_REPOZITÁŘE" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                        Zdrojový kód
+                    </a>
+                    <a href="vystupy/vycistena_data.csv" download class="inline-flex items-center gap-2 px-4 py-2 bg-white text-stone-700 text-sm font-medium border border-stone-300 rounded-lg hover:bg-stone-50 transition-colors shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Dataset (CSV)
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Obsah článku -->
+        <div class="space-y-12">
+            
+            <section>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Absolutní propad a zotavení</h2>
+                <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                    Data jasně ilustrují vývoj celkové návštěvnosti památek. Spojnicový graf znázorňuje absolutní propad cestovního ruchu v roce 2020 a následný postupný proces zotavení v obou krajích.
+                </p>
+                <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                    <img src="vystupy/vyvoj_navstevnosti.png" alt="Vývoj návštěvnosti" class="w-full h-auto rounded-lg">
+                    <figcaption class="text-sm text-stone-500 mt-3 text-center px-4 pb-2">Graf 1: Vývoj celkové návštěvnosti památek (2019–2025)</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Odlišná dynamika regionů</h2>
+                <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                    Kvantifikace šoku z pandemie ukazuje podstatné rozdíly. Metropolitní turismus v Praze, který je vysoce závislý na zahraničních hostech a letecké dopravě, zaznamenal podstatně tvrdší propad než Jihomoravský kraj. Ten se dokázal mnohem rychleji opřít o domácí turistiku a vykazoval dynamičtější návrat.
+                </p>
+                <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                    <img src="vystupy/mezirocni_zmeny.png" alt="Meziroční změny" class="w-full h-auto rounded-lg">
+                    <figcaption class="text-sm text-stone-500 mt-3 text-center px-4 pb-2">Graf 2: Meziroční procentuální změny návštěvnosti</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Srovnání klíčových období</h2>
+                <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                    Při porovnání tří hlavních fází trhu – předpandemické výkonnosti (2019), vlivu restrikcí (2020–2021) a aktuálního stavu zotavení (2022–2025) – je zřetelné, že ačkoliv trh roste, některé segmenty stále nedosáhly původních hodnot z roku 2019.
+                </p>
+                <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                    <img src="vystupy/srovnani_obdobi.png" alt="Srovnání období" class="w-full h-auto rounded-lg">
+                    <figcaption class="text-sm text-stone-500 mt-3 text-center px-4 pb-2">Graf 3: Průměrná návštěvnost v klíčových obdobích</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Nejnavštěvovanější objekty (2025)</h2>
+                <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                    Rozdílná struktura trhu je nejlépe vidět na žebříčcích TOP 10 památek. Zatímco Praha je silně centralizovaná a vykazuje absolutní dominanci Pražského hradu s výrazným odstupem ostatních, na jižní Moravě vede Státní zámek Lednice, ale trh je zde rozložen podstatně rovnoměrněji.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                        <img src="vystupy/top10_Jihomoravský_kraj.png" alt="Top 10 JMK" class="w-full h-auto rounded-lg">
+                    </figure>
+                    <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                        <img src="vystupy/top10_Praha.png" alt="Top 10 Praha" class="w-full h-auto rounded-lg">
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Paretovo pravidlo v praxi</h2>
+                <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                    Geografická a objektová koncentrace návštěvníků odhaluje zátěž turistických lokalit. Křivky kumulativního podílu dokazují, jak malý počet památek generuje drtivou většinu turistické návštěvnosti. V obou regionech obslouží většinu turistů nejvyšších 20 % zkoumaných objektů, přičemž v Praze je tento jev podstatně výraznější.
+                </p>
+                <figure class="bg-white p-2 rounded-xl shadow-sm border border-stone-200">
+                    <img src="vystupy/koncentrace_navstevniku.png" alt="Koncentrace návštěvníků" class="w-full h-auto rounded-lg">
+                    <figcaption class="text-sm text-stone-500 mt-3 text-center px-4 pb-2">Graf 4: Geografická a objektová koncentrace návštěvníků</figcaption>
+                </figure>
+            </section>
+
+        </div>
+        
+        <!-- Patička s technologickým stackem -->
+        <footer class="mt-16 pt-8 border-t border-stone-200">
+            <div class="flex flex-col items-center gap-4">
+                <p class="text-stone-500 font-medium text-sm">Zdroj dat: NIPOS / Tourdata (2019–2025)</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 mt-2">
+                    <span class="px-3 py-1 bg-stone-200 text-stone-700 rounded-full text-xs font-semibold">Python</span>
+                    <span class="px-3 py-1 bg-stone-200 text-stone-700 rounded-full text-xs font-semibold">Pandas</span>
+                    <span class="px-3 py-1 bg-stone-200 text-stone-700 rounded-full text-xs font-semibold">Matplotlib</span>
+                    <span class="px-3 py-1 bg-stone-200 text-stone-700 rounded-full text-xs font-semibold">Tailwind CSS v4</span>
+                    <span class="px-3 py-1 bg-stone-200 text-stone-700 rounded-full text-xs font-semibold">HTML5</span>
+                </div>
+            </div>
+        </footer>
+
+    </article>
+</body>
+</html>
