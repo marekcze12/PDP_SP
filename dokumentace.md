@@ -1,13 +1,14 @@
 # Analýza návštěvnosti památek v Jihomoravském kraji a Praze
 
-**Předmět:** Datová analýza  
+**Předmět:** Práce s daty  
 **Autoři:** Marek Maněk  
-**Vyučující:** [Doplnit jméno vyučujícího]  
+**Vyučující:** Ing. Mgr. Michal Jeřábek, Ph.D.  
+**Repozitář projektu:** [[URL_TVÉHO_GITHUB_REPOZITÁŘE](https://github.com/marekcze12/PDP_SP)]
 
 ---
 
 ## 1. Úvod a cíl projektu
-Tato semestrální práce analyzuje návštěvnost památek v Jihomoravském kraji a Praze na základě otevřených dat. Cílem je identifikovat faktory ovlivňující návštěvnost, porovnat dopady pandemie covidu-19 a vizualizovat trendy v cestovním ruchu napříč odlišně vymezenými regiony.
+Tato semestrální práce analyzuje návštěvnost památek v Jihomoravském kraji a Praze na základě otevřených dat. Cílem je identifikovat faktory ovlivňující návštěvnost, porovnat dopady pandemie covidu-19 a vizualizovat trendy v cestovním ruchu napříč odlišně vymezenými regiony. Výstupy analýzy jsou zároveň prezentovány formou moderního webového reportu.
 
 ### 1.1 Výzkumné otázky
 1. Jaký byl celkový vývoj návštěvnosti památek v obou regionech v čase?
@@ -20,7 +21,7 @@ Tato semestrální práce analyzuje návštěvnost památek v Jihomoravském kra
 * **Zdroj:** Agregované statistiky návštěvnosti turistických cílů (NIPOS / Tourdata)
 * **Období:** 2019–2025
 * **Lokalita:** Jihomoravský kraj, Hlavní město Praha
-* **Počet záznamů:** [Doplnit po analýze, např. ~400]
+* **Počet záznamů:** 322 (po vyčištění a transformaci)
 * **Počet atributů:** 5 (finální vyčištěné sloupce)
 
 ### 2.2 Způsob získání dat
@@ -47,13 +48,13 @@ Proces čištění dat transformoval původní široký formát (roky jako sloup
 ## 4. Kvalita dat a problémy
 
 ### 4.1 Identifikované problémy
-**4.1.1 Nekonzistentní chybějící hodnoty:** 
+**4.1.1 Nekonzistentní chybějící hodnoty:**  
 V původních tabulkách se pro označení chybějících dat střídaly znaky jako tečka (`.`) a křížek (`x`). Tyto znaky způsobovaly, že celý sloupec s roční návštěvností byl datově interpretován jako text (object) namísto čísla.
 
-**4.1.2 Skryté agregační mezisoučty:** 
+**4.1.2 Skryté agregační mezisoučty:**  
 Data obsahovala vložené součtové řádky za jednotlivé okresy. Pokud by nebyly odfiltrovány, vykazoval by dataset téměř dvojnásobnou celkovou návštěvnost.
 
-**4.1.3 Extrémní odlehlé hodnoty (Outliery):** 
+**4.1.3 Extrémní odlehlé hodnoty (Outliery):**  
 Pražský hrad dosahuje návštěvnosti přes 2,5 milionu osob ročně, což představuje masivní outlier vychylující průměrné statistiky v pražském regionu směrem nahoru.
 
 ### 4.2 Provedené opravy
@@ -68,15 +69,16 @@ Pražský hrad dosahuje návštěvnosti přes 2,5 milionu osob ročně, což př
 | Fáze | Počet záznamů | Počet sloupců |
 | :--- | :--- | :--- |
 | Původní data (široký formát) | ~70 památek | 9 |
-| Po čištění a transformaci (melt) | [Doplnit z Pythonu] | 5 |
+| Po čištění a transformaci (melt) | 322 | 5 |
 
-## 5. Metodologie zpracování
+## 5. Metodologie zpracování a Tech Stack
 
-### 5.1 Použité nástroje
-* **Python 3.14+**
-* **Pandas** - manipulace a čištění dat
-* **NumPy** - matematické operace a filtry
-* **Matplotlib** - vizualizace výsledků
+### 5.1 Použité nástroje (Tech Stack)
+* **Python 3.14+** – jádro pro zpracování dat a automatizaci
+* **Pandas** – manipulace, čištění a relační transformace dat
+* **NumPy** – matematické operace a ošetření chybějících hodnot
+* **Matplotlib** – generování analytických grafů a vizualizací
+* **HTML5 & Tailwind CSS v4** – tvorba responzivního webového reportu (`index.html`) v redakčním stylu (editorial design)
 
 ### 5.2 Postup zpracování
 ```text
@@ -96,15 +98,16 @@ JM_2019-25.xlsx & PR_2019-25.xlsx
 ↓
 vystupy/vycistena_data.csv (finální dataset)
 vystupy/*.png (vygenerované grafy)
+index.html (webová prezentace výsledků)
 ```
 
 ### 5.3 Matematický aparát
 **Meziroční procentuální změna:**  
-Kvantifikace rychlosti poklesu či růstu trhu byla počítána vzorcem:
+Kvantifikace rychlosti poklesu či růstu trhu byla počítána vzorcem:  
 `Změna = ((Návštěvnost[t] − Návštěvnost[t-1]) / Návštěvnost[t-1]) × 100`
 
 **Kumulativní podíl návštěvnosti (Koncentrace):**  
-Pro vyhodnocení Paretova pravidla v turismu:
+Pro vyhodnocení Paretova pravidla v turismu:  
 `Kumulativní podíl = (Σ návštěvnosti seřazených památek / Celková návštěvnost regionu) × 100`
 
 ## 6. Výsledky
@@ -113,9 +116,9 @@ Pro vyhodnocení Paretova pravidla v turismu:
 
 | Metrika | Jihomoravský kraj | Praha |
 | :--- | :--- | :--- |
-| Průměrná návštěvnost jedné památky | [Doplnit z CSV] | [Doplnit z CSV] |
-| Medián návštěvnosti | [Doplnit z CSV] | [Doplnit z CSV] |
-| Maximum (Nejnavštěvovaný objekt) | [Doplnit z CSV] | [Doplnit z CSV] |
+| Průměrná návštěvnost jedné památky | 42 450 | 186 035 |
+| Medián návštěvnosti | 23 888 | 46 817 |
+| Maximum (Nejnavštěvovaný objekt) | 389 620 | 2 551 240 |
 
 ### 6.2 Vizualizace
 
@@ -150,13 +153,15 @@ Pro vyhodnocení Paretova pravidla v turismu:
 * **Metodika počítání:** Některé objekty evidují i průchody otevřeným areálem, jiné vykazují striktně prodané vstupenky do expozic.
 
 ## 8. Závěr
-Analýza agregovaného datasetu návštěvnosti v letech 2019–2025 ukázala, že pandemický šok zásadním způsobem ovlivnil chod památkových objektů, přičemž regiony závislé na mezinárodním turismu utrpěly hlubší ztráty. Data prokázala silnou koncentraci návštěvníků do úzké skupiny nejznámějších objektů napříč oběma kraji. Projekt demonstruje kompletní postup datové analýzy v Pythonu – od načítání problematických excelových tabulek, přes jejich relační čištění, agregaci, až po finální interpretaci metrik a vizualizaci.
+Analýza agregovaného datasetu návštěvnosti v letech 2019–2025 ukázala, že pandemický šok zásadním způsobem ovlivnil chod památkových objektů, přičemž regiony závislé na mezinárodním turismu utrpěly hlubší ztráty. Data prokázala silnou koncentraci návštěvníků do úzké skupiny nejznámějších objektů napříč oběma kraji. Projekt demonstruje kompletní postup datové analýzy v Pythonu – od načítání problematických excelových tabulek, přes jejich relační čištění, agregaci, až po finální interpretaci metrik, vizualizaci a publikaci prostřednictvím moderního webového rozhraní.
 
 ## 9. Přílohy
 
 ### 9.1 Struktura projektu
 ```text
 Semestralni_prace/
+├── index.html            # Webová prezentace výsledků (Tailwind CSS v4)
+├── dokumentace.md        # Kompletní dokumentace projektu
 ├── analyza_pamatek.py    # Načtení, čištění a transformace
 ├── analyza_grafy.py      # Meziroční změny a žebříčky
 ├── analyza_dokonceni.py  # Kumulativní podíly a analýza období
@@ -169,6 +174,7 @@ Semestralni_prace/
 ```
 
 ### 9.2 Výstupy
+* `index.html` – Responzivní webový report v redakčním designu s prokliky na GitHub a stažení dat.
 * `vystupy/vycistena_data.csv` – Vyčištěný centrální dataset ve strukturovaném formátu.
 * `vystupy/zakladni_statistiky.csv` – Statistiky (průměry, mediány).
 * `vystupy/*.png` – 6 exportovaných analytických vizualizací v tiskové kvalitě.
